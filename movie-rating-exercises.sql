@@ -60,7 +60,7 @@ FROM (
 	FROM Movie, Rating  
 	WHERE Movie.MID = Rating.MID and year < 1980
 	GROUP BY Movie.MID)
-	, (
+	,(
 	SELECT AVG(STARS) S2 
 	FROM Movie, Rating  
 	WHERE Movie.MID=Rating.MID and year>1980
