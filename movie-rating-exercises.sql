@@ -57,11 +57,11 @@ ORDER BY Spread DESC, Title;
 SELECT AVG(S1) - AVG(S2) 
 FROM (
 	SELECT AVG(STARS) S1 
-	FROM Movie M, Rating R 
-	WHERE M.MID=R.MID and year < 1980
-	GROUP BY M.MID
-), 
-	(SELECT AVG(STARS) S2 
-	FROM Movie M, Rating R 
-	WHERE M.MID=R.MID and year > 1980
-	GROUP BY M.MID);
+	FROM Movie, Rating  
+	WHERE Movie.MID = Rating.MID and year < 1980
+	GROUP BY Movie.MID)
+	, (
+	SELECT AVG(STARS) S2 
+	FROM Movie, Rating  
+	WHERE Movie.MID=Rating.MID and year>1980
+	GROUP BY Movie.MID);
